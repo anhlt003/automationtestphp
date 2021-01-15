@@ -17,6 +17,10 @@
         static $userdept ='12345'; 
         static $userpass ='Race1234';
         static $usermail ='motoki_test@race.co.jp'; 
+
+        // admin account
+        static $adminAcc ='raceAdmin_T';
+        static $adminPass='12345' ;
  
     };
 

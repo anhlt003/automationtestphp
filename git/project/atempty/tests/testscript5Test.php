@@ -119,6 +119,7 @@
                     ->click();
             sleep(1);
 
+            // click search
             $element10 = $this->webDriver->findElement(WebDriverBy::xpath('//*[@id="adviserSearchForm"]/div[1]/div[2]/div/button'));
             $element10->click();
             sleep(1);
