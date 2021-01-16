@@ -63,17 +63,24 @@
             // unfold group search condition
             $element5 = $this->webDriver->findElement(WebDriverBy::xpath('//*[@id="containerSearchSection"]/div[1]/div/button'));
             $element5->click();
-            sleep(1);
+            sleep(3);
 
             // unfold profile search condition
+            #profileSearchSection > div.card-body > div:nth-child(3) > div:nth-child(1) > div > div:nth-child(1) > div > div > div.css-1pahdxg-control > div.css-1hb7zxy-IndicatorsContainer > div
             $element6 = $this->webDriver->findElement(WebDriverBy::xpath('//*[@id="profileSearchSection"]/div[1]/div/button'));
             $element6->click();
-            sleep(1);
+            sleep(3);
+
 
             // search lang condition 1
-            $lang_cond_1 = $this->webDriver->findElement(WebDriverBy::xpath('//*[@id="profileSearchSection"]/div[2]/div[3]/div[1]/div/div[1]/div/div/div/div[1]/div'));
+            $lang_cond_1 = $this->webDriver->findElement(WebDriverBy::xpath('//*[@id="profileSearchSection"]/div[2]/div[3]/div[1]/div/div[1]/div/div/div[1]/div[1]'));
+            $x_coor = $lang_cond_1->getLocation()->getX(); 
+            $y_coor = $lang_cond_1->getLocation()->getY()*80/100;
+            print($x_coor."__".$y_coor);
+
+            $this->webDriver->executeScript("window.scrollBy({$x_coor},{$y_coor})");
             $lang_cond_1->click();
-            sleep(1);
+            sleep(5);
             $menu_lang_1 = $this->webDriver->findElement(
                     // TBD: In IE or when chrome restart it will generate select id with different value.
                     WebDriverBy::cssSelector('#react-select-8-option-2')) 
@@ -125,9 +132,12 @@
             sleep(1);
 
             $this->search_result = $this->webDriver->findElement(WebDriverBy::xpath('//*[@id="root"]/div[2]/div[1]/section/div/div/div/div[1]/div/div[3]/div/b'));
-            
+            $x_search_coor = $this->search_result->getLocation()->getX(); 
+            $y_search_coor = $this->search_result->getLocation()->getY()*80/100;
+            print($x_search_coor."__".$y_search_coor);
+
             // send javascript call.
-            $this->webDriver->executeScript("window.scrollBy(0,1000)");
+            $this->webDriver->executeScript("window.scrollBy({$x_search_coor},{$y_search_coor})");
             // $this->webDriver->executeAsyncScript("window.scrollBy(0,500)");
 
             //$scroll_bar = $this->webDriver->findElement(WebDriverBy::)
